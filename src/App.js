@@ -1,28 +1,48 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React, {Component} from 'react';
 import './App.css';
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
+    state = {
+        name: 'John',
+        age: 35
+    };
+
+    handleClick = (e) => {
+        this.setState({
+            name: 'Yoshi',
+            age: 19,
+            input: ''
+        });
+        e.target.remove();
+    };
+
+    handleChange = (e) => {
+        this.setState({
+            input: e.target.value
+        })
+    };
+
+    handleSubmit = (e) => {
+        e.preventDefault();
+        this.setState({
+            name: this.state.input
+        })
+    };
+
+
+    render() {
+        return (
+            <div className="App">
+                <h1>My name is {this.state.name} and Im {this.state.age}</h1>
+                <button onClick={this.handleClick}>Click me to change name and age!</button>
+
+                <form onSubmit={this.handleSubmit}>
+                    <input type="text" onChange={this.handleChange} />
+                    <button>Submit to update name</button>
+                </form>
+            </div>
+        );
+    }
 }
 
 export default App;
