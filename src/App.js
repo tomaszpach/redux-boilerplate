@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import Children from './Children';
 
 class App extends Component {
     state = {
@@ -39,6 +40,7 @@ class App extends Component {
                     <input type="text" onChange={this.handleChange} />
                     <button>Submit to update name</button>
                 </form>
+                <Children name="Tomasz" age="27" belt="black"/>
             </div>
         );
     }
