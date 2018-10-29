@@ -1,18 +1,22 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class Children extends Component {
-    render() {
-
-        const { name, age, belt } = this.props;
-
+// UI component without state made by function
+const Children = ({characters}) => {
+    const charactersList = characters.map(character => {
         return (
-            <div>
-                <div>Name: { name }</div>
-                <div>Age: { age }</div>
-                <div>Belt: { belt }</div>
+            <div className="character" key={character.id}>
+                <div>Name: {character.name}</div>
+                <div>Age: {character.age}</div>
+                <div>Belt: {character.belt}</div>
             </div>
         )
-    }
-}
+    });
+
+    return (
+        <div className="characters-list">
+            {charactersList}
+        </div>
+    )
+};
 
 export default Children;

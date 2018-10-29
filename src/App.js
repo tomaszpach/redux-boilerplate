@@ -1,10 +1,17 @@
 import React, {Component} from 'react';
 import Children from './Children';
 
+// Container component with state made by class
 class App extends Component {
     state = {
         name: 'John',
-        age: 35
+        age: 35,
+
+        characters: [
+            {name: 'Mario', age: 27, belt: 'black', id: 1},
+            {name: 'Luigi', age: 26, belt: 'black', id: 2},
+            {name: 'Yoshi', age: 19, belt: 'green', id: 3}
+        ]
     };
 
     handleClick = (e) => {
@@ -40,8 +47,7 @@ class App extends Component {
                     <input type="text" onChange={this.handleChange} />
                     <button>Submit to update name</button>
                 </form>
-                <Children name="Mario" age="27" belt="black"/>
-                <Children name="Yoshi" age="29" belt="green"/>
+                <Children characters={this.state.characters}/>
             </div>
         );
     }
