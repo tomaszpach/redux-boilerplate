@@ -5,8 +5,8 @@ import AddCharacter from './AddCharacter';
 // Container component with state made by class
 class App extends Component {
     state = {
-        name: 'John',
-        age: 35,
+        // name: 'John', // doesnt need anymore - see removed render method part
+        // age: 35, // doesnt need anymore - see removed render method part
 
         characters: [
             {name: 'Mario', age: 27, belt: 'black', id: 1},
@@ -15,14 +15,15 @@ class App extends Component {
         ]
     };
 
-    handleClick = (e) => {
-        this.setState({
-            name: 'Yoshi',
-            age: 19,
-            input: ''
-        });
-        e.target.remove();
-    };
+    // it is removed with button inside render method
+    // handleClick = (e) => {
+    //     this.setState({
+    //         name: 'Yoshi',
+    //         age: 19,
+    //         input: ''
+    //     });
+    //     e.target.remove();
+    // };
 
     handleChange = (e) => {
         this.setState({
@@ -46,18 +47,29 @@ class App extends Component {
         })
     };
 
+    deleteCharacter = (id) => {
+        let characters = this.state.characters.filter(character => {
+            return character.id !== id
+        });
+        this.setState({
+            characters: characters
+        })
+    };
+
 
     render() {
         return (
             <div className="App">
-                <h1>My name is {this.state.name} and Im {this.state.age}</h1>
-                <button onClick={this.handleClick}>Click me to change name and age!</button>
+                {/*<h1>My name is {this.state.name} and Im {this.state.age}</h1>*/}
+                {/*<button onClick={this.handleClick}>Click me to change name and age!</button>*/}
 
-                <form onSubmit={this.handleSubmit}>
-                    <input type="text" onChange={this.handleChange} />
-                    <button>Submit to update name</button>
-                </form>
-                <Children characters={this.state.characters}/>
+                {/*<form onSubmit={this.handleSubmit}>*/}
+                    {/*<input type="text" onChange={this.handleChange} />*/}
+                    {/*<button>Submit to update name</button>*/}
+                {/*</form>*/}
+
+                <h1>Hello World</h1>
+                <Children characters={this.state.characters} deleteCharacter={this.deleteCharacter}/>
                 <AddCharacter addCharacter={this.addCharacter}/>
             </div>
         );
