@@ -38,7 +38,12 @@ class App extends Component {
     };
 
     addCharacter = (character) => {
-        console.log(character);
+        character.id = Math.random();
+        let characters = [...this.state.characters, character];
+
+        this.setState({
+            characters: characters
+        })
     };
 
 
