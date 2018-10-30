@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Children from './Children';
+import AddCharacter from './AddCharacter';
 
 // Container component with state made by class
 class App extends Component {
@@ -36,6 +37,10 @@ class App extends Component {
         })
     };
 
+    addCharacter = (character) => {
+        console.log(character);
+    };
+
 
     render() {
         return (
@@ -48,6 +53,7 @@ class App extends Component {
                     <button>Submit to update name</button>
                 </form>
                 <Children characters={this.state.characters}/>
+                <AddCharacter addCharacter={this.addCharacter}/>
             </div>
         );
     }
